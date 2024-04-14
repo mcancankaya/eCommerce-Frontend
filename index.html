@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- favicon -->
+
+    <!-- bootstrap icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+      <div class="container-sm px-4 px-lg-5">
+        <a class="navbar-brand" href="#!">E TİCARET</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#!"
+                >Anasayfa</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="myorders.html">Siparişlerim</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#!">Profilim</a>
+            </li>
+          </ul>
+          <!-- cart modal -->
+          <!-- Button trigger modal -->
+          <a class="nav-link" href="#!">Siparişlerim </a>
+          <button
+            class="btn btn-outline-dark"
+            type="submit"
+            id="cart-modal-button"
+            data-bs-toggle="modal"
+            data-bs-target="#cart-modal"
+            aria-expanded="false"
+          >
+            <i class="bi-cart-fill me-1"></i>
+            Sepet
+            <span
+              id="item-count"
+              class="badge bg-dark text-white ms-1 rounded-pill"
+              >0</span
+            >
+          </button>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="cart-modal"
+            tabindex="-1"
+            aria-labelledby="cart-modal"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <!-- modal header -->
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="cart-modal">
+                    Sepetteki Ürünler
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <!-- modal body -->
+                <div class="modal-body">
+                  <table id="modal-table" class="table table-hovered">
+                    <thead>
+                      <tr>
+                        <th scope="col">Adı</th>
+                        <th>Adet</th>
+                        <th>Fiyat</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- dinamik -->
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td class="text-end" colspan="2">Toplam Fiyat</td>
+                        <td id="totalAmount"></td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+                <!-- modal footer -->
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Kapat
+                  </button>
+                  <button id="saveOrder" type="button" class="btn btn-primary">
+                    Sepeti Onayla
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- cart modal-->
+          <div id="loginlogoutcontainer">
+            <a
+              class="btn btn-outline-danger ms-3"
+              type="menu"
+              id="login-button"
+              href="signin.html"
+            >
+              Giriş Yap
+            </a>
+            <a
+              class="btn btn-outline-danger ms-3"
+              type="menu"
+              id="logout-button"
+              href="signin.html"
+              hidden="true"
+            >
+              Çıkış Yap
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- sidebar -->
+    <div class="container-fluid row mt-2 mb-2">
+      <aside class="col-sm-3 border border-danger pt-3">
+        <!-- Category -->
+
+        <div id="categoryList" class="list-group mt-2 mb-2">
+          <label class="text-center">Categories</label>
+          <button
+            value="0"
+            type="button"
+            class="list-group-item list-group-item-action active"
+          >
+            Tümü
+          </button>
+        </div>
+        <hr />
+
+        <div class="list-group mb-4">
+          <label class="text-center">Markalar</label>
+          <input
+            id="brandNameInput"
+            type="text"
+            class="form-control"
+            placeholder="Enter brand name"
+          />
+          <select
+            id="brandSelect"
+            class="form-select mt-1"
+            aria-label="Default select example"
+          >
+            <!-- brand option-->
+          </select>
+
+          <hr />
+          <label class="text-center">Modeller</label>
+          <input
+            id="modelNameInput"
+            type="text"
+            class="form-control"
+            placeholder="Enter Model Name"
+          />
+          <select
+            id="modelSelect"
+            class="form-select mt-1"
+            aria-label="Default select example"
+          >
+            <!-- model option-->
+          </select>
+          <hr />
+
+          <hr />
+          <button id="filterButton" class="btn btn-primary">Filtrele</button>
+        </div>
+      </aside>
+
+      <section class="col-sm-9">
+        <div class="container">
+          <!-- Alert div -->
+          <div id="alert-box"></div>
+          <div id="product-list" class="product-list row row-cols-md-4"></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer-->
+    <footer class="p-5 m-1 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">
+          Copyright &copy; Your Website 2024
+        </p>
+      </div>
+    </footer>
+
+    <!-- js -->
+    <script src="/js/script.js" type="module"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/auth.js" type="module"></script>
+  </body>
+</html>
